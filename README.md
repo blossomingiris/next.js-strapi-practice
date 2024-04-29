@@ -3,7 +3,7 @@
 ## Tech stack
 
 - [Next.js](https://nextjs.org/docs)
-- [Strapi][https://docs.strapi.io/dev-docs/intro]
+- [Strapi](https://docs.strapi.io/dev-docs/intro)
 - [React Tanstack Query](https://tanstack.com/query/latest/docs/framework/react/overview)
 - [Tailwind](https://tailwindcss.com/docs/installation)
 - [Shadcn](https://ui.shadcn.com/docs)
