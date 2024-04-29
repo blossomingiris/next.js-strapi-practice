@@ -52,7 +52,7 @@ There is few functionality available:
 
 - User Creation: create new users with validation
 - Users View: see all users listed in table
-- User View: view user details by navigating through the user table (only for default users with "slug" field")
+- User View: view user details by navigating through users table (only for default user with "slug" field")
 
 ## Deploy on Vercel
 
