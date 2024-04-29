@@ -19,14 +19,14 @@ import {
   SelectItem,
   SelectValue,
   SelectTrigger,
-} from './ui/select'
+} from '../ui/select'
 import { userSchema } from '@/lib/schemas'
 import { createUser } from '@/actions/actions'
 import { useMutation } from '@tanstack/react-query'
-import CardWrapper from './card-wrapper'
+import CardWrapper from '../ui/card-wrapper'
 import { useToggle } from '@/hooks/useToggle'
-import { useEffect } from 'react'
 import { LuXCircle, LuPartyPopper } from 'react-icons/lu'
+import { useEffect } from 'react'
 
 export default function UserForm() {
   const { close, isOpened, open } = useToggle()
@@ -41,7 +41,7 @@ export default function UserForm() {
     },
   })
 
-  const { data, mutate, isError, isPending, isSuccess, error } = useMutation({
+  const { data, mutate, isPending } = useMutation({
     mutationFn: createUser,
   })
 
@@ -50,34 +50,34 @@ export default function UserForm() {
   }
 
   useEffect(() => {
-    if (isSuccess && data?.success) {
+    if (data?.success) {
       open()
       form.reset()
-    } else if (isError && error.message) {
+    } else if (data?.error) {
       open()
     }
-  }, [isSuccess, isError])
+  }, [data?.success, data?.error])
 
   return (
     <>
-      {isSuccess && isOpened && (
+      {typeof data?.success !== 'boolean' && isOpened && (
         <CardWrapper
           title="success"
           closeHandler={close}
           buttonText="cancel"
           icon={<LuPartyPopper size={20} />}
         >
-          {data?.success}
+          {data?.success.name}
         </CardWrapper>
       )}
-      {isError && isOpened && (
+      {typeof data?.error !== 'boolean' && isOpened && (
         <CardWrapper
           title="error"
           closeHandler={close}
-          buttonText="ok"
-          icon={<LuXCircle />}
+          buttonText="cancel"
+          icon={<LuXCircle size={20} />}
         >
-          {error.message}
+          {data?.error.name}: {data?.error.message}
         </CardWrapper>
       )}
       {!isOpened && (
