@@ -22,7 +22,9 @@ export default function UserPage({ params }: { params: { slug: string } }) {
           </div>
         )}
         {!isFetching && !data && (
-          <div className="flex flex-col">This no slug for this User in db</div>
+          <div className="flex flex-col">
+            No slug exists for this User in the database
+          </div>
         )}
       </CardWrapper>
       <CustomLink href={'/users'}>

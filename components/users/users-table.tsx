@@ -20,7 +20,7 @@ export default function UsersTable() {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>id</TableHead>
+          <TableHead>ID</TableHead>
           <TableHead>First name</TableHead>
           <TableHead>Email</TableHead>
           <TableHead>Age Group</TableHead>
